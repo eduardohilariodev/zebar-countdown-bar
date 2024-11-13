@@ -1,0 +1,12 @@
+@use "../utils/rem";
+@use "../base/colors";
+
+#goal {
+  all: unset;
+  position: absolute;
+  block-size: 90%;
+  inset-inline-end: rem.convert(48px);
+  color: rgba(colors.$lighter, 70%);
+  font-weight: bold;
+  text-align: end;
+}

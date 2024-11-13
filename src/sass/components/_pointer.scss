@@ -1,0 +1,24 @@
+@use "../base/colors";
+@use "../utils/rem";
+
+$pointer-inner-glow: inset rem.convert(0 0 1px 1px) rgba(colors.$primary, 50%);
+$pointer-outer-glow: rem.convert(0 0 14px 1px) rgba(colors.$primary, 100%);
+
+.pointer {
+  position: relative;
+
+  .pointer__fill {
+    z-index: 20;
+    position: absolute;
+    inline-size: rem.convert(3px);
+    block-size: 100%;
+    transform: translate(rem.convert(-2px));
+    border-radius: 50% 50%;
+    background: white;
+    box-shadow: inset rem.convert(0px 0px 1px 1px) colors.$lighter,
+      rem.convert(0px 0px 5px -1px) colors.$yellow-lighter,
+      rem.convert(0px 0px 7px -1px) colors.$yellow,
+      rem.convert(0px 0px 10px 1px) colors.$primary,
+      rem.convert(0px 0px 13px 1px) colors.$red;
+  }
+}

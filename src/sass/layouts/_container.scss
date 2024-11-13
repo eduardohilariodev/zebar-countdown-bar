@@ -1,0 +1,32 @@
+@use "../utils/rem";
+@use "../base/colors";
+
+.container {
+  display: flex;
+  position: relative;
+  justify-content: center;
+  inline-size: 100%;
+  block-size: 34px;
+  padding-inline: rem.convert(8px);
+  padding-block: rem.convert(4px);
+  gap: rem.convert(16px);
+  background-color: rgba(colors.$black, 0.6);
+  transition: background-color 1s cubic-bezier(0.4, 0, 0.2, 1);
+
+  &.flash {
+    background-color: rgba(colors.$black, 0.9);
+  }
+
+  &::before {
+    z-index: -1;
+    position: absolute;
+    inline-size: 100%;
+    block-size: 100%;
+    inset-block-start: 0;
+    inset-inline-start: 0;
+    background-position: top center;
+    background-size: cover;
+    content: "";
+    filter: blur(rem.convert(4px));
+  }
+}

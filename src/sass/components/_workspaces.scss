@@ -1,0 +1,55 @@
+@use "../utils/rem";
+@use "../base/colors";
+@use "../globals/typography";
+
+button:focus {
+  outline: none;
+}
+
+.workspaces {
+  display: flex;
+  position: relative;
+  inline-size: fit-content;
+  gap: rem.convert(10px);
+}
+
+.workspace {
+  display: block;
+  z-index: 0;
+  position: relative;
+  padding: rem.convert(4px 10px);
+  transform: translateY(rem.convert(-1px));
+  border: transparent;
+  border-radius: rem.convert(4px);
+  background: transparent;
+  color: rgba(colors.$neutral, 40%);
+  font-weight: bold;
+  cursor: pointer;
+  // transition: 300ms all ease-in-out;
+}
+
+.cursor {
+  z-index: 10;
+  position: absolute;
+  block-size: calc(100% - rem.convert(2px));
+  border: inset rem.convert(1px) rgba(colors.$white, 12%);
+  border-radius: rem.convert(6px);
+  background: transparent;
+  box-shadow: inset rem.convert(0px 0px 8px 0px) rgba(colors.$neutral, 20%),
+    rem.convert(0px 2px 0px 0px) rgba(colors.$white, 6%),
+    rem.convert(0px 1px 10px 1px) rgba(colors.$white, 8%),
+    rem.convert(0px 3px 7px 1px) rgba(colors.$black, 5%);
+  color: colors.$white;
+  text-shadow: rem.convert(0px 0px 12px) rgba(colors.$neutral, 80%),
+    rem.convert(0px 4px 3px) rgba(colors.$neutral, 20%);
+}
+// button.active,
+// button:hover {
+// }
+
+// nav button:nth-child(1):hover ~ span {
+//   inset-inline-start: 0;
+// }
+// nav button:nth-child(2):hover ~ span {
+//   inset-inline-start: 95px;
+// }

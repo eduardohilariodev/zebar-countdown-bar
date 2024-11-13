@@ -1,0 +1,13 @@
+@use "sass:color";
+
+$primary: #ff4d00;
+
+$white: color.change($primary, $lightness: 98%);
+$warmer: color.adjust($primary, $hue: -8deg);
+$lighter: color.change($primary, $lightness: 80%);
+$neutral: color.change($primary, $saturation: 21%, $lightness: 73%);
+$black: color.change($primary, $saturation: 0%, $lightness: 2%);
+
+$red: #9e1600;
+$yellow: #fe8b0f;
+$yellow-lighter: #fdb24d;

@@ -1,0 +1,109 @@
+@use "../base/colors";
+@use "../base/typography";
+@use "../utils/rem";
+$progress-fill-box-shadow: inset rem.convert(0px -3px 6px -1px)
+    rgba(colors.$lighter, 20%),
+  rem.convert(0px 2px 0px 0px) rgba(colors.$lighter, 40%),
+  inset rem.convert(0px 1px 0px 0px) rgba(colors.$neutral, 10%);
+
+$box-shadow__interval--active: rem.convert(0 0 0 6px) rgba(colors.$black, 0%),
+  rem.convert(0 0 0 6px) rgba(colors.$warmer, 100%);
+
+$progress-fill-active: inset rem.convert(24px 0 16px -12px)
+  rgba(colors.$neutral, 100%);
+
+$border-width: rem.convert(3px);
+$gradient-spread: rem.convert(6px);
+
+.interval {
+  display: flex;
+  z-index: 10;
+  position: relative;
+  inline-size: 100%;
+  block-size: 100%;
+  border-radius: rem.convert(6px);
+  background: rgba(colors.$primary, 2%);
+  box-shadow: inset rem.convert(-1px -1px 2px 0px) rgba(colors.$lighter, 40%),
+    inset rem.convert(0px 2px 4px 4px) rgba(colors.$black, 30%),
+    inset rem.convert(0px 1px 2px 2px) rgba(colors.$black, 40%);
+
+  * {
+    transition: all 0.75s ease-in-out;
+  }
+
+  &.flash {
+    animation: flash-orange 1s ease-in-out;
+  }
+}
+
+@keyframes flash-orange {
+  0%,
+  45%,
+  55%,
+  95%,
+  100% {
+    background: rgba(colors.$warmer, 2%);
+  }
+  25%,
+  75% {
+    background: rgba(colors.$lighter, 70%);
+  }
+}
+
+.progress {
+  display: flex;
+  position: relative;
+  justify-content: end;
+  inline-size: 100%;
+  block-size: 100%;
+
+  .progress__fill {
+    block-size: calc(100% - rem.convert(2px));
+    background: rgba(colors.$primary, 8%);
+    box-shadow: $progress-fill-box-shadow;
+  }
+
+  .progress__fill--idle {
+    border-radius: rem.convert(6px 0px 0px 6px);
+  }
+}
+
+.minutes-left {
+  display: flex;
+  align-items: center;
+  block-size: calc(100% - rem.convert(2px));
+  border-radius: rem.convert(0px 6px 6px 0px);
+  background: rgba(colors.$primary, 8%);
+  box-shadow: inset rem.convert(0 1px 0 0) rgba(colors.$lighter, 10%),
+    rem.convert(0 2px 0 0) rgba(colors.$lighter, 40%),
+    inset rem.convert(0 -3px 6px -1px) rgba(colors.$lighter, 30%);
+  color: rgba(colors.$lighter, 70%);
+  line-height: 1;
+  font-family: typography.$font-mono;
+}
+
+.minutes-left__text {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  inline-size: rem.convert(40px);
+  block-size: rem.convert(16px);
+  padding-inline: rem.convert(8px);
+  transform: translateY(rem.convert(1px));
+}
+
+.minutes-left__dash {
+  transform: translateY(rem.convert(-1px));
+}
+
+.progress::after {
+  z-index: 10;
+  position: absolute;
+  inline-size: rem.convert(1px);
+  block-size: calc(100% - rem.convert(3px));
+  inset-block-start: rem.convert(1px);
+  inset-inline-start: calc(50% + rem.convert(12px));
+  border: solid rem.convert(1px) rgba(colors.$lighter, 20%);
+  content: "";
+}

@@ -1,0 +1,25 @@
+@use "../utils/rem";
+@use "../base/colors";
+
+$font-size: rem.convert(13px);
+$font-serif: "Barlow";
+$font-mono: "Josefin Sans Variable";
+
+$text-colors: (
+  "black": colors.$black,
+  "neutral": colors.$neutral,
+  "primary": colors.$primary,
+  "white": colors.$white,
+);
+
+@each $key, $value in $text-colors {
+  .text-#{$key} {
+    color: $value;
+  }
+}
+
+body {
+  color: colors.$neutral;
+  font-size: $font-size;
+  font-family: $font-serif;
+}

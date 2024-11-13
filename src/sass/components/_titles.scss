@@ -1,0 +1,40 @@
+@use "../utils/rem";
+@use "../base/colors";
+
+%title {
+  z-index: 20;
+  position: absolute;
+  inset-block-start: 25%;
+  padding-inline: rem.convert(2px);
+  padding-block: rem.convert(1px);
+  transform: translateY(rem.convert(-1px));
+  border-radius: rem.convert(2px);
+  background-color: transparent;
+  font-weight: bold;
+  text-shadow: rem.convert(0px 0px 4px) rgba(colors.$black, 60%);
+}
+
+.start-title {
+  @extend %title;
+  inset-inline-start: rem.convert(18px);
+}
+
+.end-title {
+  @extend %title;
+  display: flex;
+  inset-inline-end: rem.convert(56px);
+  gap: rem.convert(8px);
+}
+
+.start-title::before,
+.end-title::before {
+  z-index: -10;
+  position: absolute;
+  inline-size: 100%;
+  block-size: 100%;
+  inset-inline-start: 0;
+  backdrop-filter: blur(rem.convert(4px));
+
+  background: rgba(colors.$white, 8%);
+  content: "";
+}

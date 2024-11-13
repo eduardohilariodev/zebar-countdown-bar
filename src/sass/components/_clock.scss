@@ -1,0 +1,43 @@
+@use "../base/typography";
+@use "../base/colors";
+@use "../utils/rem";
+
+.time {
+  display: flex;
+  align-items: center;
+  transform: translateY(rem.convert(-1px));
+  border-radius: rem.convert(6px);
+  background: rgba(colors.$black, 20%);
+  box-shadow: inset rem.convert(0 1px 0 0) rgba(colors.$lighter, 10%),
+    rem.convert(0 2px 0 0) rgba(colors.$lighter, 40%),
+    inset rem.convert(0 -3px 6px -1px) rgba(colors.$lighter, 30%);
+  color: colors.$lighter;
+  line-height: 1;
+  font-family: typography.$font-mono;
+}
+
+@debug colors.$lighter;
+
+.time__hours,
+.time__minutes {
+  display: flex;
+  position: relative;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  inline-size: rem.convert(16px);
+  block-size: rem.convert(16px);
+  padding: rem.convert(0px 14px);
+  transform: translateY(rem.convert(1px));
+  text-shadow: rem.convert(0 1px 7px) rgba(colors.$lighter, 70%),
+    rem.convert(0 3px 4px) rgba(colors.$lighter, 30%);
+}
+
+.time__hours::after {
+  position: absolute;
+  inline-size: rem.convert(1px);
+  block-size: 95%;
+  inset-inline-end: 0;
+  border-inline-end: solid rem.convert(1px) rgba(colors.$lighter, 40%);
+  content: "";
+}
